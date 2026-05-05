@@ -170,28 +170,41 @@ function App() {
   if (votos[6] > votos[indexMax]) indexMax = 6;
 
   return (
-    <div className="container">
-      <h1>Tip</h1>
-
-      <p>{tips[selected]}</p>
-      <p>Votos: {votos[selected]}</p>
-
-      <button onClick={votar}>Votar</button>
-      <button onClick={otroTip}>Otro tip</button>
-      <button onClick={reiniciar}>Reiniciar votos</button>
-
-      <h2>El más votado</h2>
-
-      {votos[indexMax] === 0 ? (
-        <p>No hay votos todavía</p>
-      ) : (
-        <>
-          <p>{tips[indexMax]}</p>
-          <p>Votos: {votos[indexMax]}</p>
-        </>
-      )}
+  <div>
+    <div className="header">
+      <h1>Tips de Productividad</h1>
+      <p>Pequeñas acciones, grandes resultados</p>
     </div>
-  );
+
+    <div className="container">
+
+      <div className="card">
+        <h2>Tip actual</h2>
+
+        <div className="tip">{tips[selected]}</div>
+        <div className="votos">Votos: {votos[selected]}</div>
+
+        <button onClick={votar}>Votar</button>
+        <button onClick={otroTip}>Siguiente tip</button>
+        <button onClick={reiniciar}>Reiniciar</button>
+      </div>
+
+      <div className="card">
+        <h2>Tip más votado</h2>
+
+        {votos[indexMax] === 0 ? (
+          <p>No hay votos todavía</p>
+        ) : (
+          <>
+            <div className="tip">{tips[indexMax]}</div>
+            <div className="votos">Votos: {votos[indexMax]}</div>
+          </>
+        )}
+      </div>
+
+    </div>
+  </div>
+);
 }
 
 export default App;
