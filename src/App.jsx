@@ -124,13 +124,17 @@ import { useState } from "react";
 
 function App() {
   const tips = [
-    "Organiza tu día con una lista",
-    "Usa la técnica Pomodoro",
-    "Evita distracciones del celular"
+    "Tomar descansos cortos",
+    "Trabajar en bloques de tiempo",
+    "Dormir bien para rendir mejor",
+    "Mantener el espacio de trabajo ordenado",
+    "Silenciar notificaciones innecesarias",
+    "Evita distracciones del celular",
+    "Priorizar tareas importantes"
   ];
 
   const [selected, setSelected] = useState(0);
-  const [votos, setVotos] = useState([0, 0, 0]);
+  const [votos, setVotos] = useState([0, 0, 0, 0, 0, 0, 0]);
 
   // votar
   const votar = () => {
