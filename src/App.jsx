@@ -1,4 +1,4 @@
-import { useState } from 'react'
+/*import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
@@ -118,5 +118,45 @@ function App() {
     </>
   )
 }
+export default App */
 
-export default App
+import { useState } from "react";
+
+function App() {
+  const [tips, setTips] = useState([
+    { tip: "Organiza tu día con una lista de tareas", votos: 0 },
+    { tip: "Usa la técnica Pomodoro", votos: 0 },
+    { tip: "Evita distracciones del celular", votos: 0 }
+  ]);
+
+  const [selected, setSelected] = useState(0);
+
+  // votar
+  const votar = () => {
+    const nuevosTips = [...tips];
+    nuevosTips[selected].votos++;
+    setTips(nuevosTips);
+  };
+
+  // cambiar tip
+  const otroTip = () => {
+    const random = Math.floor(Math.random() * tips.length);
+    setSelected(random);
+  };
+
+  return (
+    <div>
+      <h1>Tip</h1>
+      <p>{tips[selected].tip}</p>
+      <p>Votos: {tips[selected].votos}</p>
+
+      <button onClick={votar}>Votar</button>
+      <button onClick={otroTip}>Otro tip</button>
+
+      <h2>El más votado</h2>
+      <p>{tips[0].tip}</p>
+    </div>
+  );
+}
+
+export default App;
