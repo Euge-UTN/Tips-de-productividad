@@ -1,83 +1,100 @@
 body {
-  background-color: #f5f7fa;
   margin: 0;
+  background-color: #eef2f7;
   font-family: "Segoe UI", Arial, sans-serif;
 }
 
-/* Encabezado */
+/* HEADER tipo app */
 .header {
-  background-color: #dbe4f0; /* azul grisáceo claro */
+  background-color: #4a6fa5;
+  color: white;
   text-align: center;
-  padding: 20px;
-  border-bottom: 1px solid #ccc;
+  padding: 18px 10px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .header h1 {
   margin: 0;
-  font-size: 22px;
-  color: #333;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .header p {
   margin: 5px 0 0;
-  font-size: 14px;
-  color: #666;
+  font-size: 13px;
+  opacity: 0.9;
 }
 
-/* Contenedor */
+/* CONTENEDOR */
 .container {
-  max-width: 500px;
-  margin: 30px auto;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 0 10px;
 }
 
-/* Tarjetas */
+/* TARJETAS */
 .card {
   background: white;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #eee;
+  padding: 18px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
 }
 
-/* Títulos */
+/* TITULOS */
 .card h2 {
-  font-size: 16px;
-  color: #555;
+  font-size: 14px;
+  color: #666;
   margin-bottom: 10px;
 }
 
-/* Texto del tip */
+/* TIP */
 .tip {
-  background-color: #f2f4f8;
+  background-color: #f4f6fb;
   padding: 12px;
-  border-radius: 8px;
+  border-radius: 10px;
+  font-size: 16px;
   color: #333;
   margin-bottom: 10px;
 }
 
-/* Votos */
+/* VOTOS */
 .votos {
-  font-size: 14px;
-  color: #777;
+  font-size: 13px;
+  color: #888;
   margin-bottom: 10px;
 }
 
-/* Botones */
+/* BOTONES */
 button {
-  padding: 8px 14px;
-  margin: 5px;
-  border-radius: 6px;
+  padding: 10px;
+  margin: 5px 3px;
+  border-radius: 10px;
   border: none;
-  background-color: #4a5568; /* gris oscuro */
-  color: white;
   cursor: pointer;
+  font-size: 14px;
   transition: 0.2s;
 }
 
-button:hover {
-  background-color: #2d3748; /* más oscuro */
+/* Botón principal */
+button:nth-of-type(1) {
+  background-color: #4a6fa5;
+  color: white;
+}
+
+/* Botón secundario */
+button:nth-of-type(2) {
+  background-color: #dbe4f0;
+  color: #2d3748;
+}
+
+/* Botón reiniciar */
+button:nth-of-type(3) {
+  background-color: #e2e8f0;
+  color: #555;
 }
 
 button:active {
-  transform: scale(0.97);
+  transform: scale(0.96);
 }
