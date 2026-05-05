@@ -136,29 +136,26 @@ function App() {
   const [selected, setSelected] = useState(0);
   const [votos, setVotos] = useState([0, 0, 0, 0, 0, 0, 0]);
 
-  // votar
   const votar = () => {
     const nuevos = [...votos];
     nuevos[selected]++;
     setVotos(nuevos);
   };
 
-  // cambiar tip
   const otroTip = () => {
     const random = Math.floor(Math.random() * tips.length);
     setSelected(random);
   };
 
-  // buscar el más votado (forma simple con if)
+  // más votado (simple con if)
   let indexMax = 0;
 
-  if (votos[1] > votos[indexMax]) {
-    indexMax = 1;
-  }
-
-  if (votos[2] > votos[indexMax]) {
-    indexMax = 2;
-  }
+  if (votos[1] > votos[indexMax]) indexMax = 1;
+  if (votos[2] > votos[indexMax]) indexMax = 2;
+  if (votos[3] > votos[indexMax]) indexMax = 3;
+  if (votos[4] > votos[indexMax]) indexMax = 4;
+  if (votos[5] > votos[indexMax]) indexMax = 5;
+  if (votos[6] > votos[indexMax]) indexMax = 6;
 
   return (
     <div>
@@ -170,8 +167,15 @@ function App() {
       <button onClick={otroTip}>Otro tip</button>
 
       <h2>El más votado</h2>
-      <p>{tips[indexMax]}</p>
-      <p>Votos: {votos[indexMax]}</p>
+
+      {votos[indexMax] === 0 ? (
+        <p>No hay votos todavía</p>
+      ) : (
+        <>
+          <p>{tips[indexMax]}</p>
+          <p>Votos: {votos[indexMax]}</p>
+        </>
+      )}
     </div>
   );
 }
