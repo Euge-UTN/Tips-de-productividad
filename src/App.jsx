@@ -121,6 +121,7 @@ function App() {
 export default App */
 
 import { useState } from "react";
+import "./App.css";
 
 function App() {
   const tips = [
@@ -136,15 +137,26 @@ function App() {
   const [selected, setSelected] = useState(0);
   const [votos, setVotos] = useState([0, 0, 0, 0, 0, 0, 0]);
 
+  // votar
   const votar = () => {
     const nuevos = [...votos];
     nuevos[selected]++;
     setVotos(nuevos);
   };
 
+  // cambiar tip (evita repetir)
   const otroTip = () => {
-    const random = Math.floor(Math.random() * tips.length);
+    let random;
+    do {
+      random = Math.floor(Math.random() * tips.length);
+    } while (random === selected);
+
     setSelected(random);
+  };
+
+  // reiniciar votos
+  const reiniciar = () => {
+    setVotos([0, 0, 0, 0, 0, 0, 0]);
   };
 
   // más votado (simple con if)
@@ -158,13 +170,15 @@ function App() {
   if (votos[6] > votos[indexMax]) indexMax = 6;
 
   return (
-    <div>
+    <div className="container">
       <h1>Tip</h1>
+
       <p>{tips[selected]}</p>
       <p>Votos: {votos[selected]}</p>
 
       <button onClick={votar}>Votar</button>
       <button onClick={otroTip}>Otro tip</button>
+      <button onClick={reiniciar}>Reiniciar votos</button>
 
       <h2>El más votado</h2>
 
