@@ -137,6 +137,9 @@ function App() {
   const [selected, setSelected] = useState(0);
   const [votos, setVotos] = useState([0, 0, 0, 0, 0, 0, 0]);
 
+  // guarda los que ya salieron
+  const [vistos, setVistos] = useState([0]);
+
   // votar
   const votar = () => {
     const nuevos = [...votos];
@@ -144,19 +147,28 @@ function App() {
     setVotos(nuevos);
   };
 
-  // cambiar tip (evita repetir)
+  // cambiar tip SIN repetir (con do...while)
   const otroTip = () => {
+    // si ya vimos todos → reinicia
+    if (vistos.length === tips.length) {
+      setVistos([selected]);
+      return;
+    }
+
     let random;
+
     do {
       random = Math.floor(Math.random() * tips.length);
-    } while (random === selected);
+    } while (vistos.includes(random)); // evita repetir
 
     setSelected(random);
+    setVistos([...vistos, random]);
   };
 
   // reiniciar votos
   const reiniciar = () => {
     setVotos([0, 0, 0, 0, 0, 0, 0]);
+    setVistos([selected]);
   };
 
   // más votado (simple con if)
@@ -170,40 +182,28 @@ function App() {
   if (votos[6] > votos[indexMax]) indexMax = 6;
 
   return (
-  <div>
-    <div className="header">
-      <h1>Tips de Productividad</h1>
-    </div>
-
     <div className="container">
+      <h1>Tip</h1>
 
-      <div className="card">
-        <h2>Tip actual</h2>
+      <p>{tips[selected]}</p>
+      <p>Votos: {votos[selected]}</p>
 
-        <div className="tip">{tips[selected]}</div>
-        <div className="votos">Votos: {votos[selected]}</div>
+      <button onClick={votar}>Votar</button>
+      <button onClick={otroTip}>Otro tip</button>
+      <button onClick={reiniciar}>Reiniciar votos</button>
 
-        <button onClick={votar}>Votar</button>
-        <button onClick={otroTip}>Siguiente tip</button>
-        <button onClick={reiniciar}>Reiniciar</button>
-      </div>
+      <h2>El más votado</h2>
 
-      <div className="card">
-        <h2>Tip más votado</h2>
-
-        {votos[indexMax] === 0 ? (
-          <p>No hay votos todavía</p>
-        ) : (
-          <>
-            <div className="tip">{tips[indexMax]}</div>
-            <div className="votos">Votos: {votos[indexMax]}</div>
-          </>
-        )}
-      </div>
-
+      {votos[indexMax] === 0 ? (
+        <p>No hay votos todavía</p>
+      ) : (
+        <>
+          <p>{tips[indexMax]}</p>
+          <p>Votos: {votos[indexMax]}</p>
+        </>
+      )}
     </div>
-  </div>
-);
+  );
 }
 
 export default App;
