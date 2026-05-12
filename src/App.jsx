@@ -185,7 +185,6 @@ function App() {
     <div>
       <div className="header">
         <h1>Tips de Productividad</h1>
-        <p>Pequeñas acciones, grandes resultados</p>
       </div>
 
       <div className="container">
