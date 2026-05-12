@@ -150,24 +150,25 @@ function App() {
     setVotos(nuevos);
   };
 
-  // otro tip sin repetir
   const otroTip = () => {
 
-    // si ya mostró todos → reinicia
-    if (vistos.length === tips.length) {
-      setVistos([selected]);
-      return;
-    }
+  let nuevosVistos = vistos;
 
-    let random;
+  // si ya mostró todos, reinicia
+  if (vistos.length === tips.length) {
+    nuevosVistos = [selected];
+    setVistos([selected]);
+  }
 
-    do {
-      random = Math.floor(Math.random() * tips.length);
-    } while (vistos.includes(random));
+  let random;
 
-    setSelected(random);
-    setVistos([...vistos, random]);
-  };
+  do {
+    random = Math.floor(Math.random() * tips.length);
+  } while (nuevosVistos.includes(random));
+
+  setSelected(random);
+  setVistos([...nuevosVistos, random]);
+};
 
   // reiniciar votos
   const reiniciar = () => {
