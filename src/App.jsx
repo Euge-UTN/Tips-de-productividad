@@ -135,7 +135,10 @@ function App() {
   ];
 
   const [selected, setSelected] = useState(0);
-  const [votos, setVotos] = useState([0, 0, 0, 0, 0, 0, 0]);
+
+  const [votos, setVotos] = useState([
+    0, 0, 0, 0, 0, 0, 0
+  ]);
 
   // tips que ya salieron
   const [vistos, setVistos] = useState([0]);
@@ -147,9 +150,10 @@ function App() {
     setVotos(nuevos);
   };
 
-  // cambiar tip sin repetir
+  // otro tip sin repetir
   const otroTip = () => {
-    // si ya mostró todos, reinicia
+
+    // si ya mostró todos → reinicia
     if (vistos.length === tips.length) {
       setVistos([selected]);
       return;
@@ -171,7 +175,7 @@ function App() {
     setVistos([selected]);
   };
 
-  // buscar el más votado
+  // buscar más votado
   let indexMax = 0;
 
   if (votos[1] > votos[indexMax]) indexMax = 1;
@@ -183,47 +187,68 @@ function App() {
 
   return (
     <div>
+
       <div className="header">
         <h1>Tips de Productividad</h1>
       </div>
 
       <div className="container">
 
+        {/* TARJETA TIP ACTUAL */}
         <div className="card">
+
           <h2>Tip actual</h2>
 
           <div className="tip">
-            {tips[selected]}
+            "{tips[selected]}"
           </div>
 
           <div className="votos">
             Votos: {votos[selected]}
           </div>
 
+          <div className="contador">
+            {vistos.length} / {tips.length} tips vistos
+          </div>
+
           <div className="buttons">
-            <button className="vote-btn" onClick={votar}>
-              Votar
+
+            <button
+              className="vote-btn"
+              onClick={votar}
+            >
+              🤍 Votar
             </button>
 
-            <button className="next-btn" onClick={otroTip}>
-              Otro tip
+            <button
+              className="next-btn"
+              onClick={otroTip}
+            >
+              Siguiente tip
             </button>
 
-            <button className="reset-btn" onClick={reiniciar}>
+            <button
+              className="reset-btn"
+              onClick={reiniciar}
+            >
               Reiniciar votos
             </button>
+
           </div>
+
         </div>
 
+        {/* TARJETA MÁS VOTADO */}
         <div className="card">
-          <h2>El más votado</h2>
+
+          <h2>Tip más votado</h2>
 
           {votos[indexMax] === 0 ? (
             <p>No hay votos todavía</p>
           ) : (
             <>
               <div className="tip">
-                {tips[indexMax]}
+                "{tips[indexMax]}"
               </div>
 
               <div className="votos">
@@ -231,9 +256,11 @@ function App() {
               </div>
             </>
           )}
+
         </div>
 
       </div>
+
     </div>
   );
 }
