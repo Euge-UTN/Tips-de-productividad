@@ -140,9 +140,6 @@ function App() {
     0, 0, 0, 0, 0, 0, 0
   ]);
 
-  // tips que ya salieron
-  const [vistos, setVistos] = useState([0]);
-
   // votar
   const votar = () => {
     const nuevos = [...votos];
@@ -150,22 +147,23 @@ function App() {
     setVotos(nuevos);
   };
 
+  // cambiar tip sin repetir el mismo seguido
   const otroTip = () => {
+    let random;
 
-  // si está en el último → vuelve al primero
-  if (selected === tips.length - 1) {
-    setSelected(0);
-  } else {
-    setSelected(selected + 1);
-  }
-};
+    do {
+      random = Math.floor(Math.random() * tips.length);
+    } while (random === selected);
+
+    setSelected(random);
+  };
+
   // reiniciar votos
   const reiniciar = () => {
     setVotos([0, 0, 0, 0, 0, 0, 0]);
-    setVistos([selected]);
   };
 
-  // buscar más votado
+  // buscar el más votado
   let indexMax = 0;
 
   if (votos[1] > votos[indexMax]) indexMax = 1;
@@ -180,11 +178,12 @@ function App() {
 
       <div className="header">
         <h1>Tips de Productividad</h1>
+        <p>Pequeñas acciones, grandes resultados</p>
       </div>
 
       <div className="container">
 
-        {/* TARJETA TIP ACTUAL */}
+        {/* TIP ACTUAL */}
         <div className="card">
 
           <h2>Tip actual</h2>
@@ -197,17 +196,13 @@ function App() {
             Votos: {votos[selected]}
           </div>
 
-          <div className="contador">
-            {vistos.length} / {tips.length} tips vistos
-          </div>
-
           <div className="buttons">
 
             <button
               className="vote-btn"
               onClick={votar}
             >
-              🤍 Votar
+              ♡ Votar
             </button>
 
             <button
@@ -228,7 +223,7 @@ function App() {
 
         </div>
 
-        {/* TARJETA MÁS VOTADO */}
+        {/* MÁS VOTADO */}
         <div className="card">
 
           <h2>Tip más votado</h2>
@@ -241,8 +236,8 @@ function App() {
                 "{tips[indexMax]}"
               </div>
 
-              <div className="votos">
-                Votos: {votos[indexMax]}
+              <div className="top-votos">
+                {votos[indexMax]} votos
               </div>
             </>
           )}
