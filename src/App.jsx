@@ -119,11 +119,11 @@ function App() {
   )
 }
 export default App */
-
 import { useState } from "react";
 import "./App.css";
 
 function App() {
+
   const tips = [
     "Tomar descansos cortos",
     "Trabajar en bloques de tiempo",
@@ -140,6 +140,9 @@ function App() {
     0, 0, 0, 0, 0, 0, 0
   ]);
 
+  // tips ya vistos
+  const [vistos, setVistos] = useState([0]);
+
   // votar
   const votar = () => {
     const nuevos = [...votos];
@@ -147,27 +150,30 @@ function App() {
     setVotos(nuevos);
   };
 
+  // cambiar tip sin repetir
   const otroTip = () => {
-  let nuevosVistos = vistos;
 
-  // si ya mostró todos → reinicia
-  if (vistos.length === tips.length) {
-    nuevosVistos = [selected];
-  }
+    let nuevosVistos = vistos;
 
-  let random;
+    // si ya mostró todos → reinicia
+    if (vistos.length === tips.length) {
+      nuevosVistos = [selected];
+    }
 
-  do {
-    random = Math.floor(Math.random() * tips.length);
-  } while (nuevosVistos.includes(random));
+    let random;
 
-  setSelected(random);
-  setVistos([...nuevosVistos, random]);
-};
+    do {
+      random = Math.floor(Math.random() * tips.length);
+    } while (nuevosVistos.includes(random));
+
+    setSelected(random);
+    setVistos([...nuevosVistos, random]);
+  };
 
   // reiniciar votos
   const reiniciar = () => {
     setVotos([0, 0, 0, 0, 0, 0, 0]);
+    setVistos([selected]);
   };
 
   // buscar el más votado
