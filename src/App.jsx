@@ -152,24 +152,13 @@ function App() {
 
   const otroTip = () => {
 
-  let nuevosVistos = vistos;
-
-  // si ya mostró todos, reinicia
-  if (vistos.length === tips.length) {
-    nuevosVistos = [selected];
-    setVistos([selected]);
+  // si está en el último → vuelve al primero
+  if (selected === tips.length - 1) {
+    setSelected(0);
+  } else {
+    setSelected(selected + 1);
   }
-
-  let random;
-
-  do {
-    random = Math.floor(Math.random() * tips.length);
-  } while (nuevosVistos.includes(random));
-
-  setSelected(random);
-  setVistos([...nuevosVistos, random]);
 };
-
   // reiniciar votos
   const reiniciar = () => {
     setVotos([0, 0, 0, 0, 0, 0, 0]);
