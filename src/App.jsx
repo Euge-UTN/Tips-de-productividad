@@ -147,15 +147,23 @@ function App() {
     setVotos(nuevos);
   };
 
-  // cambiar tip sin repetir el mismo seguido
+  
+  // cambiar tip SIN repetir (con do...while)
   const otroTip = () => {
+    // si ya vimos todos → reinicia
+    if (vistos.length === tips.length) {
+      setVistos([selected]);
+      return;
+    }
+
     let random;
 
     do {
       random = Math.floor(Math.random() * tips.length);
-    } while (random === selected);
+    } while (vistos.includes(random)); // evita repetir
 
     setSelected(random);
+    setVistos([...vistos, random]);
   };
 
   // reiniciar votos
