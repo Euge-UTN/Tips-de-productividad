@@ -137,7 +137,7 @@ function App() {
   const [selected, setSelected] = useState(0);
   const [votos, setVotos] = useState([0, 0, 0, 0, 0, 0, 0]);
 
-  // guarda los que ya salieron
+  // tips que ya salieron
   const [vistos, setVistos] = useState([0]);
 
   // votar
@@ -147,9 +147,9 @@ function App() {
     setVotos(nuevos);
   };
 
-  // cambiar tip SIN repetir (con do...while)
+  // cambiar tip sin repetir
   const otroTip = () => {
-    // si ya vimos todos → reinicia
+    // si ya mostró todos, reinicia
     if (vistos.length === tips.length) {
       setVistos([selected]);
       return;
@@ -159,7 +159,7 @@ function App() {
 
     do {
       random = Math.floor(Math.random() * tips.length);
-    } while (vistos.includes(random)); // evita repetir
+    } while (vistos.includes(random));
 
     setSelected(random);
     setVistos([...vistos, random]);
@@ -171,7 +171,7 @@ function App() {
     setVistos([selected]);
   };
 
-  // más votado (simple con if)
+  // buscar el más votado
   let indexMax = 0;
 
   if (votos[1] > votos[indexMax]) indexMax = 1;
@@ -182,26 +182,59 @@ function App() {
   if (votos[6] > votos[indexMax]) indexMax = 6;
 
   return (
-    <div className="container">
-      <h1>Tip</h1>
+    <div>
+      <div className="header">
+        <h1>Tips de Productividad</h1>
+        <p>Pequeñas acciones, grandes resultados</p>
+      </div>
 
-      <p>{tips[selected]}</p>
-      <p>Votos: {votos[selected]}</p>
+      <div className="container">
 
-      <button onClick={votar}>Votar</button>
-      <button onClick={otroTip}>Otro tip</button>
-      <button onClick={reiniciar}>Reiniciar votos</button>
+        <div className="card">
+          <h2>Tip actual</h2>
 
-      <h2>El más votado</h2>
+          <div className="tip">
+            {tips[selected]}
+          </div>
 
-      {votos[indexMax] === 0 ? (
-        <p>No hay votos todavía</p>
-      ) : (
-        <>
-          <p>{tips[indexMax]}</p>
-          <p>Votos: {votos[indexMax]}</p>
-        </>
-      )}
+          <div className="votos">
+            Votos: {votos[selected]}
+          </div>
+
+          <div className="buttons">
+            <button className="vote-btn" onClick={votar}>
+              Votar
+            </button>
+
+            <button className="next-btn" onClick={otroTip}>
+              Otro tip
+            </button>
+
+            <button className="reset-btn" onClick={reiniciar}>
+              Reiniciar votos
+            </button>
+          </div>
+        </div>
+
+        <div className="card">
+          <h2>El más votado</h2>
+
+          {votos[indexMax] === 0 ? (
+            <p>No hay votos todavía</p>
+          ) : (
+            <>
+              <div className="tip">
+                {tips[indexMax]}
+              </div>
+
+              <div className="votos">
+                Votos: {votos[indexMax]}
+              </div>
+            </>
+          )}
+        </div>
+
+      </div>
     </div>
   );
 }
