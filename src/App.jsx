@@ -92,7 +92,7 @@ function App() {
               className="vote-btn"
               onClick={votar}
             >
-              ♡ Votar
+              Votar
             </button>
 
             <button

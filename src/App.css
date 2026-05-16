@@ -8,7 +8,7 @@ body {
 /* HEADER */
 
 .header {
-  background-color: #dbe4ee;
+  background-color: #d8c8bb;
   padding: 30px 20px;
   text-align: center;
   border-bottom: 1px solid #cfd8e3;
@@ -103,34 +103,34 @@ button {
 /* BOTÓN VOTAR */
 
 .vote-btn {
-  background-color: #6f8faa;
+  background-color: #a88f7a;
   color: white;
 }
 
 .vote-btn:hover {
-  background-color: #5e7f99;
+  background-color: #967c68;
 }
 
 /* BOTÓN SIGUIENTE */
 
 .next-btn {
-  background-color: #e6ebf1;
-  color: #334155;
+  background-color: #ede3da;
+  color: #5c4b3f;
 }
 
 .next-btn:hover {
-  background-color: #d7dee7;
+  background-color: #e3d6ca;
 }
 
 /* BOTÓN REINICIAR */
 
 .reset-btn {
-  background-color: #f0d7d2;
-  color: #7a4d44;
+  background-color: #d7b8b0;
+  color: #6e4d45;
 }
 
 .reset-btn:hover {
-  background-color: #e6c6c0;
+  background-color: #caa49b;
 }
 
 button:active {
