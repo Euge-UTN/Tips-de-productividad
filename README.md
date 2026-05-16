@@ -11,10 +11,7 @@ Por otro lado, se trabajó el diseño visual utilizando CSS para lograr una inte
 # Ejecución de la aplicación:
 
 Para ejecutar el proyecto es necesario tener instalado Node.js y abrir el proyecto en Visual Studio Code. Los pasos que debemos seguir para ejecutar la aplicación son los siguientes:
-Abrir la terminal dentro de la carpeta del proyecto.
-Instalar las dependencias utilizando el comando: npm install
-Ejecutar el servidor de desarrollo con el comando: npm run dev
-Abrir en el navegador el enlace que aparece en la terminal
+Abrir la terminal dentro de la carpeta del proyecto. Instalar las dependencias utilizando el comando: npm install. Ejecutar el servidor de desarrollo con el comando: npm run dev. Abrir en el navegador el enlace que aparece en la terminal
 
 # Conceptos de React utilizados:
 
