@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background-color: #f4f6f9;
+  background-color: #efe7df;
   font-family: "Segoe UI", Arial, sans-serif;
   color: #333;
 }
@@ -8,7 +8,7 @@ body {
 /* HEADER */
 
 .header {
-  background-color: #d8c8bb;
+  background-color: #cdb8a5;
   padding: 30px 20px;
   text-align: center;
   border-bottom: 1px solid #cfd8e3;
@@ -37,7 +37,7 @@ body {
 /* TARJETAS */
 
 .card {
-  background-color: white;
+  background-color: #fffaf7;
   border-radius: 18px;
   padding: 25px;
   margin-bottom: 20px;
@@ -62,7 +62,7 @@ body {
 /* TIP */
 
 .tip {
-  background-color: #eef2f6;
+  background-color: #f2e7de;
   padding: 18px;
   border-radius: 14px;
   font-size: 20px;
@@ -103,34 +103,34 @@ button {
 /* BOTÓN VOTAR */
 
 .vote-btn {
-  background-color: #a88f7a;
+  background-color: #9d806b;
   color: white;
 }
 
 .vote-btn:hover {
-  background-color: #967c68;
+  background-color: #876b57;
 }
 
 /* BOTÓN SIGUIENTE */
 
 .next-btn {
-  background-color: #ede3da;
+  background-color: #eaded3;
   color: #5c4b3f;
 }
 
 .next-btn:hover {
-  background-color: #e3d6ca;
+  background-color: #dfd0c2;
 }
 
 /* BOTÓN REINICIAR */
 
 .reset-btn {
-  background-color: #d7b8b0;
+  background-color: #d5b2aa;
   color: #6e4d45;
 }
 
 .reset-btn:hover {
-  background-color: #caa49b;
+  background-color: #c29b92;
 }
 
 button:active {
